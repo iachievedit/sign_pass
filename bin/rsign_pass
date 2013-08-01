@@ -22,6 +22,10 @@ optparse = OptionParser.new do |opts|
     options[:certificate_password] = password
   end
   
+  opts.on('-i', '--intermediate-certificate FILE', String, 'Path to the WWDR Intermediate Certificate') do |intermediate|
+    options[:intermediate_certificate] = intermediate
+  end
+  
   
   opts.on('-o', '--output FILE', String, 'File location for the output') do |file|
     options[:output] = file
@@ -37,6 +41,6 @@ optparse = OptionParser.new do |opts|
   end
 end
 optparse.parse!
-pass = SignPass.new(options[:pass_path], options[:certificate], options[:certificate_password], options[:output])
+pass = SignPass.new(options[:pass_path], options[:certificate], options[:certificate_password], options[:intermediate_certificate], options[:output])
 puts options[:force_pass_signing]
 pass.sign_pass!(options[:force_pass_signing])
