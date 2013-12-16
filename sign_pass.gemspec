@@ -48,7 +48,7 @@
 
 Gem::Specification.new do |s|
   s.name        = 'sign_pass'
-  s.version     = '1.0.0'
+  s.version     = '1.0.1'
   s.date        = '2012-08-09'
   s.summary     = "Packages and signs passes."
   s.description = "A ruby implementation of the pass signing and packaging utility."

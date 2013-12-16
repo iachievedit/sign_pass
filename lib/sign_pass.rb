@@ -77,10 +77,11 @@ class SignPass
     self.create_temporary_directory
     
     # Make a copy of the pass contents to the temporary folder
-    self.copy_pass_to_temporary_location
+    # self.copy_pass_to_temporary_location
     
     # Clean out the unneeded .DS_Store files
-    self.clean_ds_store_files
+    # This is not needed on Unix
+    # self.clean_ds_store_files
     
     # Build the json manifest
     self.generate_json_manifest
@@ -131,6 +132,9 @@ class SignPass
   
   # Creates a temporary place to work with the pass files without polluting the original
   def create_temporary_directory
+
+    self.temporary_path = self.pass_url
+    return
     self.temporary_directory = Dir.mktmpdir
     puts "Creating temp dir at #{self.temporary_directory}"
     self.temporary_path = self.temporary_directory + "/" + self.pass_url.split("/").last
@@ -213,17 +217,3 @@ class SignPass
     FileUtils.rm_rf(self.temporary_path)
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
